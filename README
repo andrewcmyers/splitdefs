@@ -1,0 +1,54 @@
+splitdefs 1.1c
+--------------
+
+Splitdefs improves a build process by preventing unnecessary builds.
+One of the annoyances of programming in C or C++ is that the natural
+desire to organize preprocessor definitions into a central configuration
+file leads to excessive rebuilding when the build process is driven
+by make using automated dependency analysis. This is particularly true if
+autoconf is being used for automatic configuration.
+
+splitdefs helps avoid excessive rebuilding by automatically
+splitting a header file into smaller headers and updating them
+only when needed.  It is also easy to integrate into a build process.
+
+Installation
+------------
+
+Run "configure", then "make". If all goes well, "make install".
+
+System Requirements
+-------------------
+
+  * ANSI C compiler
+  * ANSI C headers
+  * The C preprocessor (cpp)
+
+Documentation
+-------------
+
+There is a man page (splitdefs.1).
+
+Distribution
+------------
+
+Splitdefs may be freely distributed and used as long as this notice is
+maintained.
+
+NO WARRANTY!
+------------
+
+As free software, splitdefs comes with absolutely no warranty.  In no
+event will Andrew Myers or any other party be liable to you for damages.
+
+Bugs
+----
+
+None are known at this time.
+
+Author
+------
+
+Andrew C. Myers
+andru@lcs.mit.edu
+http://www.pmg.lcs.mit.edu/~andru

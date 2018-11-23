@@ -1,0 +1,44 @@
+TOP = .
+srcdir = .
+CC = @CC@
+CFLAGS = @CFLAGS@ $(WARN) $(LCFLAGS)
+
+WARN = -Wall
+LCFLAGS = -DNDEBUG
+
+TARGETS = splitdefs
+CONFIGURATION = Makefile config.h config.status config.log config.cache
+
+RM = @RM@ -f
+STRIP = @STRIP@
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+bindir = @bindir@
+mandir = @mandir@
+
+CFILES = splitdefs.c str.c reader.c
+OBJECTS = $(CFILES:.c=.o)
+all: $(TARGETS)
+
+splitdefs: $(OBJECTS)
+	$(CC) -o $@ $(OBJECTS)
+
+install: all
+	if test ! -d $(bindir); then mkdir -p $(bindir); fi
+	$(STRIP) splitdefs
+	$(INSTALL_PROGRAM) splitdefs $(bindir)
+	if test ! -d $(mandir); then mkdir $(mandir); fi
+	if test ! -d $(mandir)/man1; then mkdir $(mandir)/man1; fi
+	$(INSTALL_DATA) splitdefs.1 $(mandir)/man1
+
+clean:
+	$(RM) *.o
+
+clobber: clean
+	$(RM) $(TARGETS) $(CONFIGURATION)
+
+splitdefs.o str.o: config.h str.h
+reader.o splitdefs.o: reader.h

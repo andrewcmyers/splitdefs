@@ -1,0 +1,41 @@
+dnl Process this file with autoconf to produce a configure script.
+
+AC_INIT(splitdefs.c)
+AC_CONFIG_HEADER(config.h)
+
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_CPP
+AC_DEFINE_UNQUOTED(CPP,"$CPP")
+
+AC_MSG_CHECKING("whether to add - to the preprocessor invocation")
+case "$CPP" in
+  *"cc -E")
+    AC_DEFINE(CPP_ARG, "-")
+    AC_MSG_RESULT("yes");;
+
+  *)
+    AC_MSG_RESULT("no");;
+esac
+
+AC_CHECK_PROG(STRIP, strip, strip, echo)
+AC_CHECK_PROG(RM, rm, rm)
+if test -z "$RM"; then AC_MSG_ERROR("rm not found"); fi
+
+AC_HEADER_STDC
+AC_HEADER_SYS_WAIT
+AC_CHECK_HEADERS(unistd.h sys/types.h sys/stat.h fcntl.h assert.h \
+		 stdlib.h string.h stdarg.h)
+
+# Get the version
+AC_PATH_PROG(HEAD,head,yes,no)
+AC_PATH_PROG(SED,sed,yes,no)
+AC_MSG_CHECKING("splitdefs version")
+if test "$HEAD" != no && test "$SED" != no
+  then VERSION=`head -1 README | sed 's/^.* //'`
+  else VERSION=unknown
+fi
+AC_DEFINE_UNQUOTED(VERSION, "$VERSION")
+AC_MSG_RESULT($VERSION)
+
+AC_OUTPUT(Makefile)

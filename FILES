@@ -1,0 +1,13 @@
+splitdefs/README
+splitdefs/Makefile.in
+splitdefs/config.h.in
+splitdefs/configure
+splitdefs/configure.in
+splitdefs/install-sh
+splitdefs/splitdefs.1
+splitdefs/splitdefs.c
+splitdefs/str.c
+splitdefs/str.h
+splitdefs/reader.c
+splitdefs/reader.h
+splitdefs/truefalse.h
