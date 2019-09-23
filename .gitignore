@@ -2,3 +2,4 @@ config.log
 config.status
 *.o
 Makefile
+splitdefs
