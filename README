@@ -15,21 +15,25 @@ only when needed.  It is also easy to integrate into a build process.
 Installation
 ------------
 
-Place the Perl script splitdefs.perl in your path as "splitdefs".
+1. Run "configure" with an appropriate --exec-prefix option if you want to put the executable
+   somewhere other than /usr/local
 
-Otherwise you can build the C version.
+2. Do "make install"
+
+3. If you prefer the (less capable) C implementation, you can do "make install_C".
 
 System Requirements
 -------------------
 
-  * ANSI C compiler
-  * ANSI C headers
-  * The C preprocessor (cpp)
+  * The C preprocessor cpp
+  * ANSI C compiler (if you are building the C version)
 
 Documentation
 -------------
 
-There is a man page (splitdefs.1).
+There is a man page (splitdefs.1). After installation, type "man splitdefs" to
+see the documentation. Or you can run "nroff -man splitdefs.1" to see it before
+installing.
 
 Distribution
 ------------

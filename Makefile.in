@@ -26,7 +26,13 @@ all: $(TARGETS)
 splitdefs: $(OBJECTS)
 	$(CC) -o $@ $(OBJECTS)
 
-install: all
+install:
+	$(INSTALL_PROGRAM) splitdefs.perl $(bindir)/splitdefs
+	if test ! -d $(mandir); then mkdir $(mandir); fi
+	if test ! -d $(mandir)/man1; then mkdir $(mandir)/man1; fi
+	$(INSTALL_DATA) splitdefs.1 $(mandir)/man1
+
+install_C: all
 	if test ! -d $(bindir); then mkdir -p $(bindir); fi
 	$(STRIP) splitdefs
 	$(INSTALL_PROGRAM) splitdefs $(bindir)
