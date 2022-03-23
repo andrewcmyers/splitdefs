@@ -15,7 +15,9 @@ only when needed.  It is also easy to integrate into a build process.
 Installation
 ------------
 
-Run "configure", then "make". If all goes well, "make install".
+Place the Perl script splitdefs.perl in your path as "splitdefs".
+
+Otherwise you can build the C version.
 
 System Requirements
 -------------------
